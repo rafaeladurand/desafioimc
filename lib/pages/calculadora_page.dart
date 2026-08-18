@@ -33,7 +33,7 @@ class _CalculadoraPageState extends State<CalculadoraPage> {
     return Scaffold(
       appBar: AppBar(title: const Text("Calculadora de IMC")),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
 
         child: Column(
           children: [
@@ -47,28 +47,36 @@ class _CalculadoraPageState extends State<CalculadoraPage> {
             ),
             const SizedBox(height: 16),
             TextField(
-              controller: pesoController,
+              controller: alturaController,
               keyboardType: TextInputType.numberWithOptions(),
               decoration: const InputDecoration(
                 labelText: 'Altura',
                 hintText: 'Digite a sua altura: ',
               ),
             ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: calcularIMC,
+              child: const Text("Calcular IMC"),
+            ),
             const SizedBox(height: 20),
 
             Expanded(
               child: ListView.builder(
-                itemCount: listaIMC.length, 
-                itemBuilder: (context,index){
+                itemCount: listaIMC.length,
+                itemBuilder: (context, index) {
                   IMC imc = listaIMC[index];
 
                   return Card(
                     child: ListTile(
                       title: Text('IMC: ${imc.calcular().toStringAsFixed(2)}'),
-                      subtitle: Text('Peso: ${imc.peso}kg | Altura: ${imc.altura}m'),
+                      subtitle: Text(
+                        'Peso: ${imc.peso}kg | Altura: ${imc.altura}m',
+                      ),
                     ),
                   );
-              }) 
+                },
+              ),
             ),
           ],
         ),
