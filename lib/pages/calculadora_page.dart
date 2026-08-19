@@ -42,7 +42,7 @@ class _CalculadoraPageState extends State<CalculadoraPage> {
               keyboardType: TextInputType.numberWithOptions(),
               decoration: const InputDecoration(
                 labelText: 'Peso',
-                hintText: 'Digite o seu peso: ',
+                hintText: 'Digite o seu peso',
               ),
             ),
             const SizedBox(height: 16),
@@ -51,7 +51,7 @@ class _CalculadoraPageState extends State<CalculadoraPage> {
               keyboardType: TextInputType.numberWithOptions(),
               decoration: const InputDecoration(
                 labelText: 'Altura',
-                hintText: 'Digite a sua altura: ',
+                hintText: 'Digite a sua altura',
               ),
             ),
             const SizedBox(height: 16),
@@ -71,7 +71,9 @@ class _CalculadoraPageState extends State<CalculadoraPage> {
                     child: ListTile(
                       title: Text('IMC: ${imc.calcular().toStringAsFixed(2)}'),
                       subtitle: Text(
-                        'Peso: ${imc.peso}kg | Altura: ${imc.altura}m',
+                        'Peso: ${imc.peso} kg | '
+                        'Altura: ${imc.altura} m\n'
+                        'Classificação: ${imc.classificar()}',
                       ),
                     ),
                   );
